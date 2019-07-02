@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Events</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+</table>
+  <div class="row">
+    <% @events.each do |event| %>
+    <div class="col s12 m7">
+      <div class="card">
+        <div class="card-image">
+          <img src="https://via.placeholder.com/70">
+          <span class="card-title"><%= event.name %></span>
+        </div>
+        <div class="card-content">
+          <p>
+            <%= event.description %>
+          </p>
+        </div>
+        <div class="card-action">
+          <%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </div>
+      </div>
+    </div>
+        <% # = link_to 'Show', event %>
+        <% # = link_to 'Edit', edit_event_path(event) %>    
+    <% end %>
+  </div>
+
+<br>
+
+<%= link_to 'New Event', new_event_path %>
