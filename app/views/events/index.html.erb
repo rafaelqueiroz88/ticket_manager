@@ -2,21 +2,12 @@
 
 <h1>Events</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-</table>
   <div class="row">
     <% @events.each do |event| %>
-    <div class="col s12 m7">
+    <div class="col s12 m4">
       <div class="card">
         <div class="card-image">
-          <img src="https://via.placeholder.com/70">
+          <img src="https://via.placeholder.com/150x100.png">
           <span class="card-title"><%= event.name %></span>
         </div>
         <div class="card-content">
@@ -25,7 +16,9 @@
           </p>
         </div>
         <div class="card-action">
-          <%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% if admin_signed_in? %>
+            <%= link_to 'Cancelar', event, method: :delete, data: { confirm: 'Tem certeza? Esta ação não pode ser desfeita' } %>
+          <% end %>
         </div>
       </div>
     </div>
@@ -36,4 +29,6 @@
 
 <br>
 
-<%= link_to 'New Event', new_event_path %>
+<% if admin_signed_in? %>
+  <%= link_to 'Criar novo evento', new_event_path %>
+<% end %>

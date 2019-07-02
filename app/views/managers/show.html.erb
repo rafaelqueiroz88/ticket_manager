@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @manager.name %>
+</p>
+
+<p>
+  <strong>Lastname:</strong>
+  <%= @manager.lastname %>
+</p>
+
+<p>
+  <strong>Cellphone:</strong>
+  <%= @manager.cellphone %>
+</p>
+
+<%= link_to 'Edit', edit_manager_path(@manager) %> |
+<%= link_to 'Back', managers_path %>

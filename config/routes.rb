@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :admins
+  resources :managers
   # Definindo rota padrão para events
   root :to => 'events#index'
 
