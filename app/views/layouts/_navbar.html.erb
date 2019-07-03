@@ -1,0 +1,31 @@
+<nav class="blue-grey darken-4">
+    <div class="container">
+        <div class="nav-wrapper">
+            <%= link_to "Ticket Manager", root_path, class: "brand-logo" %>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
+                <li>
+                    <%= link_to events_path do %>
+                        <i class="tiny material-icons left">event_note</i>
+                        Eventos
+                    <% end %>
+                </li>
+                <% if !user_signed_in? %>
+                    <li>
+                        <%= link_to login_path do %>
+                            <i class="tiny material-icons left">perm_identity</i>
+                            Entrar
+                        <% end %>
+                    </li>
+                <% end %>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<ul class="sidenav" id="mobile-demo">
+    <li><a href="sass.html">Sass</a></li>
+    <li><a href="badges.html">Components</a></li>
+    <li><a href="collapsible.html">Javascript</a></li>
+    <li><a href="mobile.html">Mobile</a></li>
+</ul>
