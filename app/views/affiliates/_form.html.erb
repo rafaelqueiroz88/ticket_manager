@@ -1,27 +1,44 @@
-<%= form_with(model: affiliate, local: true) do |form| %>
-  <% if affiliate.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(affiliate.errors.count, "error") %> prohibited this affiliate from being saved:</h2>
+<div class="row">
+  <%= form_with(model: affiliate, local: true, class: "col s12") do |form| %>
+    <div class="row">
+      <div class="col s12">
+        <% if affiliate.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(affiliate.errors.count, "error") %> prohibited this affiliate from being saved:</h2>
 
-      <ul>
-      <% affiliate.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+            <ul>
+            <% affiliate.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+      </div>
     </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <%= form.text_field :name %>
+        <%= form.label :name %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <%= form.text_field :cellphone %>
+        <%= form.label :cellphone %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <%= form.collection_select :user_id, @user.all, :id, :email, {:prompt => 'Escolha uma conta para associar ao afiliado'} %>
+        <%= form.label :user_id %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <div class="actions">
+          <%= form.submit %>
+        </div>
+      </div>
+    </div>  
   <% end %>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :cellphone %>
-    <%= form.text_field :cellphone %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

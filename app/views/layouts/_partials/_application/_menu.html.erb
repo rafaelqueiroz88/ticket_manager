@@ -1,0 +1,22 @@
+<li>
+    <%= link_to events_path do %>
+        <i class="tiny material-icons left">event_note</i>
+        Eventos
+    <% end %>
+</li>
+<% if !user_signed_in? && !admin_signed_in? %>
+    <li>
+        <%= link_to login_path do %>
+            <i class="tiny material-icons left">perm_identity</i>
+            Entrar
+        <% end %>
+    </li>
+<% end %>
+<% if admin_signed_in? %>
+    <li>
+        <%= link_to destroy_admin_session_path, method: :delete do %>
+            <i class="tiny material-icons left">power_settings_new</i>
+            Sair
+        <% end %>
+    </li>
+<% end %>

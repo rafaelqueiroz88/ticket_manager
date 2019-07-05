@@ -7,7 +7,8 @@
     <tr>
       <th>Name</th>
       <th>Cellphone</th>
-      <th colspan="3"></th>
+      <th>User</th>
+      <th colspan="2"></th>
     </tr>
   </thead>
 
@@ -16,6 +17,7 @@
       <tr>
         <td><%= affiliate.name %></td>
         <td><%= affiliate.cellphone %></td>
+        <td><%= affiliate.user_id %></td>
         <td><%= link_to 'Show', affiliate %></td>
         <td><%= link_to 'Edit', edit_affiliate_path(affiliate) %></td>
         <td><%= link_to 'Destroy', affiliate, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -26,4 +28,4 @@
 
 <br>
 
-<%= link_to 'New Affiliate', new_affiliate_path %>
+<%= link_to 'Retornar ao módulo administrativo', managers_path %>

@@ -6,6 +6,8 @@ class ManagersController < ApplicationController
   # GET /managers.json
   def index
     @managers = Manager.all
+    @affiliates = Affiliate.all
+    @events = Event.all
   end
 
   # GET /managers/1

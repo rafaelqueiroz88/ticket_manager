@@ -1,6 +1,7 @@
 class AffiliatesController < ApplicationController
   before_action :set_affiliate, only: [:show, :edit, :update, :destroy]
-  # before_action :authenticate_user!
+  before_action :authenticate_admin!, only: [:index, :new]
+  before_action :authenticate_user!, only: [:show, :edit, :update, :destroy]
 
   # GET /affiliates
   # GET /affiliates.json
@@ -16,6 +17,7 @@ class AffiliatesController < ApplicationController
   # GET /affiliates/new
   def new
     @affiliate = Affiliate.new
+    @user = User.all
   end
 
   # GET /affiliates/1/edit
@@ -70,6 +72,6 @@ class AffiliatesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def affiliate_params
-      params.require(:affiliate).permit(:name, :cellphone)
+      params.require(:affiliate).permit(:name, :cellphone, :user_id)
     end
 end
