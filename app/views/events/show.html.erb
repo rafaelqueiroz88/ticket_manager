@@ -10,6 +10,10 @@
   <%= @event.description %>
 </p>
 
+<p>
+  <%= image_tag @event.avatar.url(:thumb) %>
+</p>
+
 <% if admin_signed_in? %>
   <%= link_to 'Edit', edit_event_path(@event) %> |
 <% end %>
