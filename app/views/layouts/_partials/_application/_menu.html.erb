@@ -6,7 +6,7 @@
 </li>
 <% if !user_signed_in? && !admin_signed_in? %>
     <li>
-        <%= link_to login_path do %>
+        <%= link_to new_person_session_path do %>
             <i class="tiny material-icons left">perm_identity</i>
             Entrar
         <% end %>

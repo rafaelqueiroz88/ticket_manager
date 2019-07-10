@@ -3,10 +3,10 @@ Rails.application.routes.draw do
   get 'site_user/index'
   # Handmade routes
   # Configura a seguinte rota: /login, para login/index (arquivo .html)
-  match 'login', :to => 'login#index', :via => :get 
-  match 'entrar', :to => 'management#index', :via => :get
-  match 'site_admin', :to => 'site_admin#index', :via => :get
-  match 'nova_conta', :to => 'site_user#index', :via => :get
+  # match 'login', :to => 'login#index', :via => :get 
+  # match 'entrar', :to => 'management#index', :via => :get
+  # match 'site_admin', :to => 'site_admin#index', :via => :get
+  # match 'nova_conta', :to => 'site_user#index', :via => :get
 
   # Devise routes
   devise_for :people

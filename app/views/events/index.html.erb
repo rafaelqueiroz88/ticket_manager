@@ -8,7 +8,6 @@
       <div class="card">
         <div class="card-image">
           <%= image_tag event.avatar.url(:medium) %>
-          <!-- <img src="https://via.placeholder.com/150x100.png"> -->
           <span class="card-title"><%= link_to event.name, event %></span>
         </div>
         <div class="card-content">
@@ -19,6 +18,9 @@
         <div class="card-action">
           <% if admin_signed_in? %>
             <%= link_to 'Cancelar', event, method: :delete, data: { confirm: 'Tem certeza? Esta ação não pode ser desfeita' } %>
+          <% end %>
+          <% if user_signed_in? %>
+            <%= link_to 'Revender para este evento', event, method: :delete, data: { confirm: 'Tem certeza? Esta ação não pode ser desfeita' } %>
           <% end %>
         </div>
       </div>
