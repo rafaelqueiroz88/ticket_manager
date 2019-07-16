@@ -1,37 +1,36 @@
 <br />
-<div class="row card">
+<div class="row">
     <br />
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name), class: "col s4") do |f| %>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "col s8 offset-s2 card", style: "box-shadow: 6px 6px 6px rgba(30, 30, 30, .4)"}) do |f| %>
+        <br /><br />
         <div class="row">
-            <div class="input-field col s4 offset-s2">
+            <div class="input-field col s8 offset-s2">
                 <%= f.text_field :email, autofocus: true, autocomplete: "email" %>
                 <%= f.label :email %>
             </div>
         </div>
         <div class="row">
-            <div class="input-field col s4 offset-s2">
+            <div class="input-field col s8 offset-s2">
                 <%= f.text_field :password, autocomplete: "current-password" %>
                 <%= f.label :password %>
             </div>
         </div>
         <div class="row">
-            
-                <% if devise_mapping.rememberable? %>
-                    <p>
-                        <label>
-                            <%= f.check_box :remember_me %>
-                            <% # = f.span :remember_me %>
-                            <span>Lembrar-me</span>
-                        </label>
-                    </p>
+            <div class="input-field col s4 offset-s2">
+                <% if devise_mapping.rememberable? %>                
+                    <label>
+                        <%= f.check_box :remember_me %>
+                        <% # = f.span :remember_me %>
+                        <span>Lembrar-me</span>
+                    </label>                    
                 <% end %>
-            
+            </div>
             <div class="input-field col s3">
-                <%= f.submit "Log in" %>
+                <%= f.submit "Entrar", class: "btn" %>
             </div>
         </div>
         <div class="row">
-            <div class="input-field col s6">
+            <div class="input-field col s6 offset-s2">
                 <%= render "devise/shared/links" %>
             </div>
         </div>

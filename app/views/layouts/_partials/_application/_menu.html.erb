@@ -4,15 +4,23 @@
         Eventos
     <% end %>
 </li>
-<% if !user_signed_in? && !admin_signed_in? %>
+<% if !person_signed_in? %>
     <li>
-        <%= link_to new_person_session_path do %>
-            <i class="tiny material-icons left">perm_identity</i>
+        <%= link_to person_data_path do %>
+            <i class="tiny material-icons left">account_circle</i>
             Entrar
         <% end %>
     </li>
 <% end %>
-<% if admin_signed_in? %>
+<% if person_signed_in? %>
+    <li>
+        <%= link_to person_data_path do %>
+            <i class="tiny material-icons left">account_circle</i>
+            Menu
+        <% end %>
+    </li>
+<% end %>
+<% if person_signed_in? %>
     <li>
         <%= link_to destroy_admin_session_path, method: :delete do %>
             <i class="tiny material-icons left">power_settings_new</i>

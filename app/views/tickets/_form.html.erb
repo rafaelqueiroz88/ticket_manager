@@ -1,0 +1,60 @@
+<div class="row">
+  
+  <% if @hasTickets.to_i > 1 %>
+    
+    <div class="row card">
+      <div class="col s8 offset-s2">
+        <div id="error_explanation">
+          <h6>Você não pode comprar mais ingressos para este evento</h6>
+          <ul>
+            <li>
+              Cada usuário pode comprar até 3 ingressos por evento :(
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  <% else %>
+    
+    <%= form_with(model: ticket, local: true, class: "col s10 offset-s1 card", style: "box-shadow: 6px 6px 6px rgba(30, 30, 30, .4)") do |form| %>
+      <div class="row">
+        <div class="col s8 offset-s2">
+          <%= form.label :description %>
+          <%= form.text_field :description, value: @event.description %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col s8 offset-s2">
+          <%= form.hidden_field :person_id, value: current_person.id %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col s8 offset-s2">
+          <%= form.label :event_id, @event.name %>
+          <%= form.text_field :event_id, value: @event.id %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col s8 offset-s2">
+          <%= form.label "Quantidade de ingressos" %>
+          <select name="quantidade">
+            <option selected value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col s8 offset-s2 center">
+          <%= form.submit "Comprar ingresso", class: "btn" %>
+        </div>
+      </div>
+
+    <% end %>
+  <% end %>
+</div>

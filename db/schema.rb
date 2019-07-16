@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_08_155106) do
+ActiveRecord::Schema.define(version: 2019_07_11_153043) do
 
   create_table "admins", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -77,6 +77,16 @@ ActiveRecord::Schema.define(version: 2019_07_08_155106) do
     t.index ["people_id"], name: "index_person_data_on_people_id"
   end
 
+  create_table "tickets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "description"
+    t.bigint "person_id"
+    t.bigint "event_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_tickets_on_event_id"
+    t.index ["person_id"], name: "index_tickets_on_person_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -91,4 +101,6 @@ ActiveRecord::Schema.define(version: 2019_07_08_155106) do
 
   add_foreign_key "affiliates", "users"
   add_foreign_key "person_data", "people", column: "people_id"
+  add_foreign_key "tickets", "events"
+  add_foreign_key "tickets", "people"
 end

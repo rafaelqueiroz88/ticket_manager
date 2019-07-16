@@ -1,12 +1,13 @@
 class PersonDataController < ApplicationController
   before_action :set_person_datum, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_person!, only: [:show, :edit, :update]
-  before_action :authenticate_admin!, only: [:index, :destroy]
+  before_action :authenticate_person!, only: [:index, :show, :edit, :update]
+  before_action :authenticate_admin!, only: [:destroy]
 
   # GET /person_data
   # GET /person_data.json
   def index
     @person_data = PersonDatum.all
+    @ticket = Ticket.where(:person_id => ["person_id = ?", current_person.id])
   end
 
   # GET /person_data/1

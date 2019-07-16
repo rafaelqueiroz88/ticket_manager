@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   
+  resources :tickets
   get 'site_user/index'
+  
   # Handmade routes
   # Configura a seguinte rota: /login, para login/index (arquivo .html)
   # match 'login', :to => 'login#index', :via => :get 

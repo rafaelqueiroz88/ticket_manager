@@ -1,6 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Person Data</h1>
+<h3>Ingressos</h3>
+
+<% @ticket.each do |ticket| %>
+  <%= ticket.description %>
+  <%= current_person.id %>
+  <%= ticket.event.description %>
+  <%= link_to 'Ver evento', ticket %>
+  <%= link_to 'Presentear', edit_ticket_path(ticket) %>
+<% end %>
 
 <table>
   <thead>
