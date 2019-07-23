@@ -1,45 +1,66 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col s12">
+    <p id="notice"><%= notice %></p>
+  </div>
+</div>
 
-<h3>Ingressos</h3>
+<% if @registrateUser != nil %>
+  <div class="row">
+    <div class="col s12">
+      <p>
+        Seu perfil não está completo <%= link_to 'Click aqui', new_person_datum_path %> para concluir
+        o seu cadastro.
+      </p>      
+    </div>
+  </div>
+<% else %>
+  <div class="row">
+    <div class="col s12">
+      <h3>Meus Ingressos</h3>
+    </div>
+  </div>
 
-<% @ticket.each do |ticket| %>
-  <%= ticket.description %>
-  <%= current_person.id %>
-  <%= ticket.event.description %>
-  <%= link_to 'Ver evento', ticket %>
-  <%= link_to 'Presentear', edit_ticket_path(ticket) %>
+  <div class="row">
+    <div class="col s12">
+      <table>
+        <thead>
+          <tr>
+            <th>Ingresso</th>
+            <th>Evento</th>
+            <th colspan="2">Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% i = 0 %>
+          <% @ticket.each do |ticket| %>
+            <% if i == 0 %>
+              <tr>
+                <td class="blue">
+                  <%= ticket.description %>
+                </td>
+                <td><%= ticket.event.description %></td>
+                <td>
+                  <%= link_to 'Ver evento', ticket %>
+                </td>
+              </tr>
+            <% else %>
+              <tr>
+                <td>
+                  <%= ticket.description %>
+                </td>
+                <td><%= ticket.event.description %></td>
+                <td>
+                  <%= link_to 'Ver evento', ticket %>
+                </td>
+                <td>
+                  <%= link_to 'Presentear', edit_ticket_path(ticket) %>
+                </td>
+              </tr>
+            <% end %>
+            <% i = i + 1 %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
 <% end %>
-
-<table>
-  <thead>
-    <tr>
-      <th>Username</th>
-      <th>Name</th>
-      <th>Lastname</th>
-      <th>Birthdate</th>
-      <th>Rg</th>
-      <th>Cpf</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @person_data.each do |person_datum| %>
-      <tr>
-        <td><%= person_datum.username %></td>
-        <td><%= person_datum.name %></td>
-        <td><%= person_datum.lastname %></td>
-        <td><%= person_datum.birthdate %></td>
-        <td><%= person_datum.rg %></td>
-        <td><%= person_datum.cpf %></td>
-        <td><%= link_to 'Show', person_datum %></td>
-        <td><%= link_to 'Edit', edit_person_datum_path(person_datum) %></td>
-        <td><%= link_to 'Destroy', person_datum, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Person Datum', new_person_datum_path %>

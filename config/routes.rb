@@ -10,6 +10,13 @@ Rails.application.routes.draw do
   # match 'site_admin', :to => 'site_admin#index', :via => :get
   # match 'nova_conta', :to => 'site_user#index', :via => :get
 
+  # devise_scope :people do
+    # custom path to login/sign_in
+    # get "/people/sign_in" => "people/sessions#new"
+    # custom path to sign_up/registration
+    # get "/sign_up" => "people/registrations#new", as: "new_people_registration"
+  # end
+
   # Devise routes
   devise_for :people
   devise_for :admins

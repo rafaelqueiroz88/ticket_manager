@@ -8,6 +8,12 @@ class PersonDataController < ApplicationController
   def index
     @person_data = PersonDatum.all
     @ticket = Ticket.where(:person_id => ["person_id = ?", current_person.id])
+    @person = PersonDatum.where(:people_id => ["people_id = ?", current_person.id]).last
+    person = PersonDatum.where(:people_id => ["people_id = ?", current_person.id]).length
+
+    if person == 0
+      @registrateUser = "Has to registrate personal data"
+    end
   end
 
   # GET /person_data/1
@@ -72,6 +78,6 @@ class PersonDataController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def person_datum_params
-      params.require(:person_datum).permit(:username, :name, :lastname, :birthdate, :rg, :cpf)
+      params.require(:person_datum).permit(:username, :name, :lastname, :birthdate, :rg, :cpf, :people_id)
     end
 end

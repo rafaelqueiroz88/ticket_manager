@@ -16,7 +16,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="input-field col s4 offset-s2">
+            <div class="input-field col s6 offset-s2">
                 <% if devise_mapping.rememberable? %>                
                     <label>
                         <%= f.check_box :remember_me %>
@@ -25,12 +25,14 @@
                     </label>                    
                 <% end %>
             </div>
-            <div class="input-field col s3">
+        <div class="row">
+        </div>
+            <div class="input-field col s4 offset-s2">
                 <%= f.submit "Entrar", class: "btn" %>
             </div>
         </div>
         <div class="row">
-            <div class="input-field col s6 offset-s2">
+            <div class="input-field col s8 offset-s2">
                 <%= render "devise/shared/links" %>
             </div>
         </div>
